@@ -17,8 +17,13 @@ and limitations under the License.
 
 /// <reference no-default-lib="true"/>
 
+type AllowedWeakTypes = AllowedWeakTypesStore[keyof AllowedWeakTypesStore];
 
-interface WeakRef<T extends object> {
+interface AllowedWeakTypesStore {
+    object: object;
+}
+
+interface WeakRef<T extends AllowedWeakTypes> {
     readonly [Symbol.toStringTag]: "WeakRef";
 
     /**
@@ -35,7 +40,7 @@ interface WeakRefConstructor {
      * Creates a WeakRef instance for the given target object.
      * @param target The target object for the WeakRef instance.
      */
-    new<T extends object>(target: T): WeakRef<T>;
+    new<T extends AllowedWeakTypes>(target: T): WeakRef<T>;
 }
 
 declare var WeakRef: WeakRefConstructor;
