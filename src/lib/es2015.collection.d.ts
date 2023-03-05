@@ -42,7 +42,7 @@ interface ReadonlyMap<K, V> {
     readonly size: number;
 }
 
-interface WeakMap<K extends object, V> {
+interface WeakMap<K extends WeakKeyTypes, V> {
     /**
      * Removes the specified element from the WeakMap.
      * @returns true if the element was successfully removed, or false if it was not present.

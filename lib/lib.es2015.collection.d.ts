@@ -62,7 +62,7 @@ interface ReadonlyMap<K, V> {
     readonly size: number;
 }
 
-interface WeakMap<K extends object, V> {
+interface WeakMap<K extends WeakKeyTypes, V> {
     /**
      * Removes the specified element from the WeakMap.
      * @returns true if the element was successfully removed, or false if it was not present.
@@ -84,8 +84,8 @@ interface WeakMap<K extends object, V> {
 }
 
 interface WeakMapConstructor {
-    new <K extends object = object, V = any>(entries?: readonly [K, V][] | null): WeakMap<K, V>;
-    readonly prototype: WeakMap<object, any>;
+    new <K extends WeakKeyTypes = WeakKeyTypes, V = any>(entries?: readonly [K, V][] | null): WeakMap<K, V>;
+    readonly prototype: WeakMap<WeakKeyTypes, any>;
 }
 declare var WeakMap: WeakMapConstructor;
 

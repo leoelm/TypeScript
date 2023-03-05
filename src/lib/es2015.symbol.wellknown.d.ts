@@ -115,7 +115,7 @@ interface Map<K, V> {
     readonly [Symbol.toStringTag]: string;
 }
 
-interface WeakMap<K extends object, V> {
+interface WeakMap<K extends WeakKeyTypes, V> {
     readonly [Symbol.toStringTag]: string;
 }
 
