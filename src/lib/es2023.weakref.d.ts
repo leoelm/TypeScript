@@ -1,4 +1,4 @@
-interface AllowedWeakTypesStore {
+interface WeakKeyTypesStore {
     symbol: symbol;
 }
 
@@ -7,7 +7,7 @@ interface FinalizationRegistry<T> {
     unregister(unregisterToken: symbol): void;
 }
 
-interface WeakRef<T extends AllowedWeakTypes> {
+interface WeakRef<T extends WeakKeyTypes> {
     /**
      * Returns the WeakRef instance's target object, or undefined if the target object has been
      * reclaimed.
@@ -16,5 +16,5 @@ interface WeakRef<T extends AllowedWeakTypes> {
 }
 
 interface WeakRefConstructor {
-    new<T extends AllowedWeakTypes>(target: T): WeakRef<T>;
+    new<T extends WeakKeyTypes>(target: T): WeakRef<T>;
 }

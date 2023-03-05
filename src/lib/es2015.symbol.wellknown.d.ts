@@ -123,7 +123,7 @@ interface Set<T> {
     readonly [Symbol.toStringTag]: string;
 }
 
-interface WeakSet<T extends object> {
+interface WeakSet<T extends WeakKeyTypes> {
     readonly [Symbol.toStringTag]: string;
 }
 
