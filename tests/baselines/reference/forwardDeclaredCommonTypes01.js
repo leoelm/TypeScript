@@ -2,9 +2,9 @@
 interface Promise<T> {}
 interface Symbol {}
 interface Map<K, V> {}
-interface WeakMap<K extends object, V> {}
+interface WeakMap<K extends WeakKeyTypes, V> {}
 interface Set<T> {}
-interface WeakSet<T extends object> {}
+interface WeakSet<T extends WeakKeyTypes> {}
 
 (function() {
     new Promise;
