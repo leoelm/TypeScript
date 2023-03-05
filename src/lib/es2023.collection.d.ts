@@ -1,7 +1,7 @@
-interface WeakMapConstructor {
-    new <K extends symbol = symbol, V = any>(entries?: readonly [K, V][] | null): WeakMap<K, V>;
+interface WeakSet<T extends WeakKeyTypes> {
+
 }
 
 interface WeakSetConstructor {
-    new <T extends symbol = symbol>(values?: readonly T[] | null): WeakSet<T>;
+    new <T extends WeakKeyTypes = WeakKeyTypes>(values?: readonly T[] | null): WeakSet<T>;
 }

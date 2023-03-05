@@ -209,10 +209,10 @@ interface SetConstructor {
     new <T>(iterable?: Iterable<T> | null): Set<T>;
 }
 
-interface WeakSet<T extends object> { }
+interface WeakSet<T extends WeakKeyTypes> { }
 
 interface WeakSetConstructor {
-    new <T extends object = object>(iterable: Iterable<T>): WeakSet<T>;
+    new <T extends WeakKeyTypes = WeakKeyTypes>(iterable: Iterable<T>): WeakSet<T>;
 }
 
 interface Promise<T> { }

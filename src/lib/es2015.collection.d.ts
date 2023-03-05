@@ -107,7 +107,7 @@ interface ReadonlySet<T> {
     readonly size: number;
 }
 
-interface WeakSet<T extends object> {
+interface WeakSet<T extends WeakKeyTypes> {
     /**
      * Appends a new object to the end of the WeakSet.
      */
@@ -124,7 +124,7 @@ interface WeakSet<T extends object> {
 }
 
 interface WeakSetConstructor {
-    new <T extends object = object>(values?: readonly T[] | null): WeakSet<T>;
-    readonly prototype: WeakSet<object>;
+    new <T extends WeakKeyTypes = WeakKeyTypes>(values?: readonly T[] | null): WeakSet<T>;
+    readonly prototype: WeakSet<WeakKeyTypes>;
 }
 declare var WeakSet: WeakSetConstructor;

@@ -1,4 +1,4 @@
-interface WeakRef<T extends AllowedWeakTypes> {
+interface WeakRef<T extends WeakKeyTypes> {
     readonly [Symbol.toStringTag]: "WeakRef";
 
     /**
@@ -15,7 +15,7 @@ interface WeakRefConstructor {
      * Creates a WeakRef instance for the given target object.
      * @param target The target object for the WeakRef instance.
      */
-    new<T extends AllowedWeakTypes>(target: T): WeakRef<T>;
+    new<T extends WeakKeyTypes>(target: T): WeakRef<T>;
 }
 
 declare var WeakRef: WeakRefConstructor;
