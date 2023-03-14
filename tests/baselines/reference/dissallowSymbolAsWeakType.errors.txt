@@ -1,0 +1,31 @@
+tests/cases/compiler/dissallowSymbolAsWeakType.ts(3,12): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(iterable: Iterable<object>): WeakSet<object>', gave the following error.
+    Argument of type 'symbol[]' is not assignable to parameter of type 'Iterable<object>'.
+      The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.
+        Type 'IteratorResult<symbol, any>' is not assignable to type 'IteratorResult<object, any>'.
+          Type 'IteratorYieldResult<symbol>' is not assignable to type 'IteratorResult<object, any>'.
+            Type 'IteratorYieldResult<symbol>' is not assignable to type 'IteratorYieldResult<object>'.
+              Type 'symbol' is not assignable to type 'object'.
+  Overload 2 of 2, '(values?: readonly object[]): WeakSet<object>', gave the following error.
+    Type 'symbol' is not assignable to type 'object'.
+tests/cases/compiler/dissallowSymbolAsWeakType.ts(4,8): error TS2345: Argument of type 'symbol' is not assignable to parameter of type 'object'.
+
+
+==== tests/cases/compiler/dissallowSymbolAsWeakType.ts (2 errors) ====
+    const s: symbol = Symbol('s');
+    
+    const ws = new WeakSet([s]);
+               ~~~~~~~~~~~~~~~~
+!!! error TS2769: No overload matches this call.
+!!! error TS2769:   Overload 1 of 2, '(iterable: Iterable<object>): WeakSet<object>', gave the following error.
+!!! error TS2769:     Argument of type 'symbol[]' is not assignable to parameter of type 'Iterable<object>'.
+!!! error TS2769:       The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.
+!!! error TS2769:         Type 'IteratorResult<symbol, any>' is not assignable to type 'IteratorResult<object, any>'.
+!!! error TS2769:           Type 'IteratorYieldResult<symbol>' is not assignable to type 'IteratorResult<object, any>'.
+!!! error TS2769:             Type 'IteratorYieldResult<symbol>' is not assignable to type 'IteratorYieldResult<object>'.
+!!! error TS2769:               Type 'symbol' is not assignable to type 'object'.
+!!! error TS2769:   Overload 2 of 2, '(values?: readonly object[]): WeakSet<object>', gave the following error.
+!!! error TS2769:     Type 'symbol' is not assignable to type 'object'.
+    ws.add(s);
+           ~
+!!! error TS2345: Argument of type 'symbol' is not assignable to parameter of type 'object'.
