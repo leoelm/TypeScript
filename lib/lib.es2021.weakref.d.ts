@@ -17,12 +17,6 @@ and limitations under the License.
 
 /// <reference no-default-lib="true"/>
 
-type WeakKeyTypes = WeakKeyTypesStore[keyof WeakKeyTypesStore];
-
-interface WeakKeyTypesStore {
-    object: object;
-}
-
 interface WeakRef<T extends WeakKeyTypes> {
     readonly [Symbol.toStringTag]: "WeakRef";
 
@@ -57,7 +51,7 @@ interface FinalizationRegistry<T> {
      * object. If provided (and not undefined), this must be an object. If not provided, the target
      * cannot be unregistered.
      */
-    register(target: object, heldValue: T, unregisterToken?: object): void;
+    register(target: symbol, heldValue: T, unregisterToken?: symbol): void;
 
     /**
      * Unregisters an object from the registry.

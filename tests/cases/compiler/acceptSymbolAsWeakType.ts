@@ -13,3 +13,10 @@ wm.set(s, true);
 wm.has(s);
 wm.get(s);
 wm.delete(s);
+
+const wr = new WeakRef(s);
+wr.deref();
+
+const f = new FinalizationRegistry<symbol>(() => {});
+f.registerSymbol(s, null);
+f.unregisterSymbol(s);
