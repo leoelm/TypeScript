@@ -161,10 +161,10 @@ interface MapConstructor {
     new <K, V>(iterable?: Iterable<readonly [K, V]> | null): Map<K, V>;
 }
 
-interface WeakMap<K extends WeakKeyTypes, V> { }
+interface WeakMap<K extends object, V> { }
 
 interface WeakMapConstructor {
-    new <K extends WeakKeyTypes, V>(iterable: Iterable<readonly [K, V]>): WeakMap<K, V>;
+    new <K extends object, V>(iterable: Iterable<readonly [K, V]>): WeakMap<K, V>;
 }
 
 interface Set<T> {
@@ -209,10 +209,10 @@ interface SetConstructor {
     new <T>(iterable?: Iterable<T> | null): Set<T>;
 }
 
-interface WeakSet<T extends WeakKeyTypes> { }
+interface WeakSet<T extends object> { }
 
 interface WeakSetConstructor {
-    new <T extends WeakKeyTypes = WeakKeyTypes>(iterable: Iterable<T>): WeakSet<T>;
+    new <T extends object = object>(iterable: Iterable<T>): WeakSet<T>;
 }
 
 interface Promise<T> { }
