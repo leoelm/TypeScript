@@ -17,6 +17,7 @@ and limitations under the License.
 
 /// <reference no-default-lib="true"/>
 
+
 interface WeakRef<T extends object> {
     readonly [Symbol.toStringTag]: "WeakRef";
 
