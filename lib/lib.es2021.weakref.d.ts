@@ -17,7 +17,7 @@ and limitations under the License.
 
 /// <reference no-default-lib="true"/>
 
-interface WeakRef<T extends WeakKeyTypes> {
+interface WeakRef<T extends object> {
     readonly [Symbol.toStringTag]: "WeakRef";
 
     /**
@@ -34,7 +34,7 @@ interface WeakRefConstructor {
      * Creates a WeakRef instance for the given target object.
      * @param target The target object for the WeakRef instance.
      */
-    new<T extends WeakKeyTypes>(target: T): WeakRef<T>;
+    new<T extends object>(target: T): WeakRef<T>;
 }
 
 declare var WeakRef: WeakRefConstructor;
@@ -51,7 +51,7 @@ interface FinalizationRegistry<T> {
      * object. If provided (and not undefined), this must be an object. If not provided, the target
      * cannot be unregistered.
      */
-    register(target: symbol, heldValue: T, unregisterToken?: symbol): void;
+    register(target: object, heldValue: T, unregisterToken?: object): void;
 
     /**
      * Unregisters an object from the registry.
