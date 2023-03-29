@@ -1,4 +1,4 @@
-interface WeakKeyTypesStore {
+interface WeakKeyTypes {
     symbol: symbol;
 }
 
@@ -36,7 +36,7 @@ interface FinalizationRegistryConstructor {
 
 declare var FinalizationRegistry: FinalizationRegistryConstructor;
 
-interface WeakRef<T extends WeakKeyTypes> {
+interface WeakRef<T extends WeakKey> {
     /**
      * Returns the WeakRef instance's target object, or undefined if the target object has been
      * reclaimed.
@@ -45,5 +45,5 @@ interface WeakRef<T extends WeakKeyTypes> {
 }
 
 interface WeakRefConstructor {
-    new<T extends WeakKeyTypes>(target: T): WeakRef<T>;
+    new<T extends WeakKey>(target: T): WeakRef<T>;
 }

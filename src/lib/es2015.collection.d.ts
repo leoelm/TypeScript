@@ -42,13 +42,13 @@ interface ReadonlyMap<K, V> {
     readonly size: number;
 }
 
-type WeakKeyTypes = WeakKeyTypesStore[keyof WeakKeyTypesStore];
-
-interface WeakKeyTypesStore {
+interface WeakKeyTypes {
     object: object;
 }
 
-interface WeakMap<K extends WeakKeyTypes, V> {
+type WeakKey = WeakKeyTypes[keyof WeakKeyTypes];
+
+interface WeakMap<K extends WeakKey, V> {
     /**
      * Removes the specified element from the WeakMap.
      * @returns true if the element was successfully removed, or false if it was not present.
@@ -113,7 +113,7 @@ interface ReadonlySet<T> {
     readonly size: number;
 }
 
-interface WeakSet<T extends WeakKeyTypes> {
+interface WeakSet<T extends WeakKey> {
     /**
      * Appends a new object to the end of the WeakSet.
      */
@@ -130,7 +130,7 @@ interface WeakSet<T extends WeakKeyTypes> {
 }
 
 interface WeakSetConstructor {
-    new <T extends WeakKeyTypes = WeakKeyTypes>(values?: readonly T[] | null): WeakSet<T>;
-    readonly prototype: WeakSet<WeakKeyTypes>;
+    new <T extends WeakKey = WeakKey>(values?: readonly T[] | null): WeakSet<T>;
+    readonly prototype: WeakSet<WeakKey>;
 }
 declare var WeakSet: WeakSetConstructor;
