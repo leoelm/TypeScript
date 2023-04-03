@@ -42,12 +42,6 @@ interface ReadonlyMap<K, V> {
     readonly size: number;
 }
 
-interface WeakKeyTypes {
-    object: object;
-}
-
-type WeakKey = WeakKeyTypes[keyof WeakKeyTypes];
-
 interface WeakMap<K extends WeakKey, V> {
     /**
      * Removes the specified element from the WeakMap.
