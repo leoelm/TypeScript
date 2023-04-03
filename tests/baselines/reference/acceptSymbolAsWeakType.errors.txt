@@ -1,0 +1,28 @@
+tests/cases/compiler/acceptSymbolAsWeakType.ts(18,3): error TS2339: Property 'registerSymbol' does not exist on type 'FinalizationRegistry<symbol>'.
+tests/cases/compiler/acceptSymbolAsWeakType.ts(19,3): error TS2339: Property 'unregisterSymbol' does not exist on type 'FinalizationRegistry<symbol>'.
+
+
+==== tests/cases/compiler/acceptSymbolAsWeakType.ts (2 errors) ====
+    const s: symbol = Symbol('s');
+    
+    const ws = new WeakSet([s]);
+    ws.add(s);
+    ws.has(s);
+    ws.delete(s);
+    
+    const wm = new WeakMap([[s, false]]);
+    wm.set(s, true);
+    wm.has(s);
+    wm.get(s);
+    wm.delete(s);
+    
+    const wr = new WeakRef(s);
+    wr.deref();
+    
+    const f = new FinalizationRegistry<symbol>(() => {});
+    f.registerSymbol(s, null);
+      ~~~~~~~~~~~~~~
+!!! error TS2339: Property 'registerSymbol' does not exist on type 'FinalizationRegistry<symbol>'.
+    f.unregisterSymbol(s);
+      ~~~~~~~~~~~~~~~~
+!!! error TS2339: Property 'unregisterSymbol' does not exist on type 'FinalizationRegistry<symbol>'.
