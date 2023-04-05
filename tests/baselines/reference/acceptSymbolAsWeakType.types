@@ -58,10 +58,10 @@ wm.has(s);
 >s : symbol
 
 wm.get(s);
->wm.get(s) : boolean
->wm.get : (key: symbol) => boolean
+>wm.get(s) : boolean | undefined
+>wm.get : (key: symbol) => boolean | undefined
 >wm : WeakMap<symbol, boolean>
->get : (key: symbol) => boolean
+>get : (key: symbol) => boolean | undefined
 >s : symbol
 
 wm.delete(s);
@@ -78,10 +78,10 @@ const wr = new WeakRef(s);
 >s : symbol
 
 wr.deref();
->wr.deref() : symbol
->wr.deref : () => symbol
+>wr.deref() : symbol | undefined
+>wr.deref : () => symbol | undefined
 >wr : WeakRef<symbol>
->deref : () => symbol
+>deref : () => symbol | undefined
 
 const f = new FinalizationRegistry<symbol>(() => {});
 >f : FinalizationRegistry<symbol>
@@ -89,18 +89,18 @@ const f = new FinalizationRegistry<symbol>(() => {});
 >FinalizationRegistry : FinalizationRegistryConstructor
 >() => {} : () => void
 
-f.registerSymbol(s, null);
->f.registerSymbol(s, null) : any
->f.registerSymbol : any
+f.register(s, null);
+>f.register(s, null) : void
+>f.register : (target: WeakKey, heldValue: symbol, unregisterToken?: WeakKey | undefined) => void
 >f : FinalizationRegistry<symbol>
->registerSymbol : any
+>register : (target: WeakKey, heldValue: symbol, unregisterToken?: WeakKey | undefined) => void
 >s : symbol
 >null : null
 
-f.unregisterSymbol(s);
->f.unregisterSymbol(s) : any
->f.unregisterSymbol : any
+f.unregister(s);
+>f.unregister(s) : void
+>f.unregister : (unregisterToken: WeakKey) => void
 >f : FinalizationRegistry<symbol>
->unregisterSymbol : any
+>unregister : (unregisterToken: WeakKey) => void
 >s : symbol
 

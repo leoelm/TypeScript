@@ -1,3 +1,4 @@
+// @strict: true
 // @lib: esnext
 // @target: esnext
 
@@ -18,5 +19,5 @@ const wr = new WeakRef(s);
 wr.deref();
 
 const f = new FinalizationRegistry<symbol>(() => {});
-f.registerSymbol(s, null);
-f.unregisterSymbol(s);
+f.register(s, null);
+f.unregister(s);

@@ -1,8 +1,7 @@
-tests/cases/compiler/acceptSymbolAsWeakType.ts(18,3): error TS2339: Property 'registerSymbol' does not exist on type 'FinalizationRegistry<symbol>'.
-tests/cases/compiler/acceptSymbolAsWeakType.ts(19,3): error TS2339: Property 'unregisterSymbol' does not exist on type 'FinalizationRegistry<symbol>'.
+tests/cases/compiler/acceptSymbolAsWeakType.ts(18,15): error TS2345: Argument of type 'null' is not assignable to parameter of type 'symbol'.
 
 
-==== tests/cases/compiler/acceptSymbolAsWeakType.ts (2 errors) ====
+==== tests/cases/compiler/acceptSymbolAsWeakType.ts (1 errors) ====
     const s: symbol = Symbol('s');
     
     const ws = new WeakSet([s]);
@@ -20,9 +19,7 @@ tests/cases/compiler/acceptSymbolAsWeakType.ts(19,3): error TS2339: Property 'un
     wr.deref();
     
     const f = new FinalizationRegistry<symbol>(() => {});
-    f.registerSymbol(s, null);
-      ~~~~~~~~~~~~~~
-!!! error TS2339: Property 'registerSymbol' does not exist on type 'FinalizationRegistry<symbol>'.
-    f.unregisterSymbol(s);
-      ~~~~~~~~~~~~~~~~
-!!! error TS2339: Property 'unregisterSymbol' does not exist on type 'FinalizationRegistry<symbol>'.
+    f.register(s, null);
+                  ~~~~
+!!! error TS2345: Argument of type 'null' is not assignable to parameter of type 'symbol'.
+    f.unregister(s);

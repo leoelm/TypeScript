@@ -16,10 +16,11 @@ const wr = new WeakRef(s);
 wr.deref();
 
 const f = new FinalizationRegistry<symbol>(() => {});
-f.registerSymbol(s, null);
-f.unregisterSymbol(s);
+f.register(s, null);
+f.unregister(s);
 
 //// [acceptSymbolAsWeakType.js]
+"use strict";
 const s = Symbol('s');
 const ws = new WeakSet([s]);
 ws.add(s);
@@ -33,5 +34,5 @@ wm.delete(s);
 const wr = new WeakRef(s);
 wr.deref();
 const f = new FinalizationRegistry(() => { });
-f.registerSymbol(s, null);
-f.unregisterSymbol(s);
+f.register(s, null);
+f.unregister(s);
