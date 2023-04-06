@@ -65,7 +65,7 @@ wr.deref();
 >wr : Symbol(wr, Decl(acceptSymbolAsWeakType.ts, 13, 5))
 >deref : Symbol(WeakRef.deref, Decl(lib.es2021.weakref.d.ts, --, --))
 
-const f = new FinalizationRegistry<symbol>(() => {});
+const f = new FinalizationRegistry(() => {});
 >f : Symbol(f, Decl(acceptSymbolAsWeakType.ts, 16, 5))
 >FinalizationRegistry : Symbol(FinalizationRegistry, Decl(lib.es2021.weakref.d.ts, --, --), Decl(lib.es2021.weakref.d.ts, --, --))
 

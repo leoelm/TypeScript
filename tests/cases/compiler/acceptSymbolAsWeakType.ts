@@ -18,6 +18,6 @@ wm.delete(s);
 const wr = new WeakRef(s);
 wr.deref();
 
-const f = new FinalizationRegistry<symbol>(() => {});
+const f = new FinalizationRegistry(() => {});
 f.register(s, null);
 f.unregister(s);
